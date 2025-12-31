@@ -5,11 +5,15 @@ import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 import { Card } from '../ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
-import type { Page, UserRole } from '../../App';
+import type { UserRole } from '../../App';
 
 interface LoginPageProps {
-  navigate: (page: Page) => void;
+  navigate: (path: string) => void;
   login: (role: UserRole, userData?: any) => void;
+  currentPage: string;
+  isLoggedIn: boolean;
+  userRole: UserRole;
+  logout: () => void;
 }
 
 export default function LoginPage({ navigate, login }: LoginPageProps) {
@@ -27,10 +31,10 @@ export default function LoginPage({ navigate, login }: LoginPageProps) {
         <Button
           variant="ghost"
           className="mb-6"
-          onClick={() => navigate('landing')}
+          onClick={() => navigate('/')}
         >
           <ArrowLeft className="size-4 mr-2" />
-          Back to Home
+          Back
         </Button>
 
         <Card className="p-8">
@@ -71,7 +75,7 @@ export default function LoginPage({ navigate, login }: LoginPageProps) {
                   Don't have an account?{' '}
                   <button
                     type="button"
-                    onClick={() => navigate('modeler-request')}
+                    onClick={() => navigate('/modeler/request')}
                     className="text-blue-600 hover:underline"
                   >
                     Apply now
@@ -109,7 +113,7 @@ export default function LoginPage({ navigate, login }: LoginPageProps) {
                   Don't have an account?{' '}
                   <button
                     type="button"
-                    onClick={() => navigate('customer-registration')}
+                    onClick={() => navigate('/customer/registration')}
                     className="text-blue-600 hover:underline"
                   >
                     Register here

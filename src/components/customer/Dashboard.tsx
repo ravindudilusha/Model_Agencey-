@@ -6,13 +6,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import BrowseModelers from './BrowseModelers';
 import BookingRequests from './BookingRequests';
 import Navbar from '../shared/Navbar';
-import type { Page, UserRole } from '../../App';
+import type { UserRole } from '../../App';
 
 interface CustomerDashboardProps {
-  navigate: (page: Page) => void;
+  navigate: (path: string) => void;
   logout: () => void;
   userRole: UserRole;
-  currentPage: Page;
+  currentPage: string;
   isLoggedIn: boolean;
 }
 

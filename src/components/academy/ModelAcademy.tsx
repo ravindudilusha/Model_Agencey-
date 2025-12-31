@@ -1,14 +1,14 @@
-import { Menu, X, Users, Star, Calendar, CheckCircle, GraduationCap, Award, ArrowRight, MapPin } from 'lucide-react';
 import { useState } from 'react';
-import { Button } from '../ui/button';
-import { Card } from '../ui/card';
 import { Badge } from '../ui/badge';
+import { Card } from '../ui/card';
+import { Button } from '../ui/button';
+import { CheckCircle, Users, Star, Award, MapPin, Calendar, ArrowRight } from 'lucide-react';
 import Navbar from '../shared/Navbar';
-import type { Page, UserRole } from '../../App';
+import type { UserRole } from '../../App';
 
 interface ModelAcademyProps {
-  navigate: (page: Page) => void;
-  currentPage: Page;
+  navigate: (path: string) => void;
+  currentPage: string;
   isLoggedIn: boolean;
   userRole: UserRole;
   logout: () => void;
@@ -140,11 +140,11 @@ export default function ModelAcademy({ navigate, currentPage, isLoggedIn, userRo
           
           <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
-              size="lg" 
+              size="lg"
               className="bg-white text-black hover:bg-gray-200 px-8 py-6 text-lg"
-              onClick={() => navigate('modeler-request')}
+              onClick={() => navigate('/modeler/request')}
             >
-              Enroll Now
+              Start Your Journey
             </Button>
             <Button 
               size="lg" 
@@ -494,7 +494,7 @@ export default function ModelAcademy({ navigate, currentPage, isLoggedIn, userRo
               <Button 
                 size="lg" 
                 className="bg-white text-black hover:bg-gray-200 px-12 py-6 text-lg"
-                onClick={() => navigate('modeler-request')}
+                onClick={() => navigate('/modeler/request')}
               >
                 Enroll Now
               </Button>

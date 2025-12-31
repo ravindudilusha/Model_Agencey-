@@ -1,20 +1,19 @@
 import { useState } from 'react';
-import { LogOut, User, Image, Video, Calendar as CalendarIcon, Bell, Settings } from 'lucide-react';
-import { Button } from '../ui/button';
-import { Card } from '../ui/card';
+import { User, Settings, Image, Video, Calendar as CalendarIcon, Bell } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
+import { Card } from '../ui/card';
 import { Badge } from '../ui/badge';
+import BookingNotifications from './BookingNotifications';
 import ProfileManagement from './ProfileManagement';
 import MediaUpload from './MediaUpload';
 import ModelerCalendar from './ModelerCalendar';
-import BookingNotifications from './BookingNotifications';
 import Navbar from '../shared/Navbar';
-import type { Page, UserRole } from '../../App';
+import type { UserRole } from '../../App';
 
 interface ModelerDashboardProps {
-  navigate: (page: Page) => void;
+  navigate: (path: string) => void;
   logout: () => void;
-  currentPage: Page;
+  currentPage: string;
   isLoggedIn: boolean;
   userRole: UserRole;
 }

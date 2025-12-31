@@ -131,13 +131,13 @@ export default function LandingPage({ navigate }: LandingPageProps) {
               <a href="#models" className="hover:text-gray-600 transition-colors">Models</a>
               <a href="#about" className="hover:text-gray-600 transition-colors">About</a>
               <button 
-                onClick={() => navigate('model-academy')} 
+                onClick={() => navigate('/academy')} 
                 className="hover:text-gray-600 transition-colors"
               >
                 Model Academy
               </button>
-              <Button variant="outline" onClick={() => navigate('login')}>Login</Button>
-              <Button className="bg-black hover:bg-gray-800 text-white" onClick={() => navigate('modeler-request')}>Become a Model</Button>
+              <Button variant="outline" onClick={() => navigate('/login')}>Login</Button>
+              <Button className="bg-black hover:bg-gray-800 text-white" onClick={() => navigate('/modeler/request')}>Become a Model</Button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -156,15 +156,15 @@ export default function LandingPage({ navigate }: LandingPageProps) {
               <a href="#about" className="block hover:text-gray-600">About</a>
               <button 
                 onClick={() => {
-                  navigate('model-academy');
+                  navigate('/academy');
                   setMobileMenuOpen(false);
                 }} 
                 className="block w-full text-left hover:text-gray-600"
               >
                 Model Academy
               </button>
-              <Button variant="outline" className="w-full" onClick={() => navigate('login')}>Login</Button>
-              <Button className="w-full bg-black hover:bg-gray-800 text-white" onClick={() => navigate('modeler-request')}>Become a Model</Button>
+              <Button variant="outline" className="w-full" onClick={() => navigate('/login')}>Login</Button>
+              <Button className="w-full bg-black hover:bg-gray-800 text-white" onClick={() => navigate('/modeler/request')}>Become a Model</Button>
             </div>
           )}
         </nav>
@@ -196,11 +196,11 @@ export default function LandingPage({ navigate }: LandingPageProps) {
               A trusted platform for booking verified models. Browse portfolios, check availability, and book with confidence.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-white hover:bg-gray-100 text-black" onClick={() => navigate('customer-dashboard')}>
+              <Button size="lg" className="bg-white hover:bg-gray-100 text-black" onClick={() => navigate('/customer/dashboard')}>
                 <Search className="size-5 mr-2" />
                 Browse Models
               </Button>
-              <Button size="lg" variant="outline" className="bg-transparent border-2 border-white hover:bg-white hover:text-black text-white" onClick={() => navigate('modeler-request')}>
+              <Button size="lg" variant="outline" className="bg-transparent border-2 border-white hover:bg-white hover:text-black text-white" onClick={() => navigate('/modeler/request')}>
                 <Users className="size-5 mr-2" />
                 Join as a Model
               </Button>
@@ -313,7 +313,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                   </Button>
                   <Button 
                     className="flex-1"
-                    onClick={() => navigate('customer-registration')}
+                    onClick={() => navigate('/customer/registration')}
                   >
                     Book Now
                   </Button>
@@ -328,7 +328,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
           ))}
         </div>
         <div className="text-center mt-12">
-          <Button size="lg" onClick={() => navigate('customer-registration')}>
+          <Button size="lg" onClick={() => navigate('/customer/registration')}>
             Register to View All Models
           </Button>
         </div>
@@ -445,7 +445,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
 
       {/* Limited View Dialog for Non-Registered Users - Full Preview with Locked Content */}
       <Dialog open={showLimitedView} onOpenChange={setShowLimitedView}>
-        <DialogContent className="max-w-[95vw] lg:max-w-[1100px] h-[90vh] overflow-hidden p-0 gap-0" aria-describedby={undefined}>
+        <DialogContent className="w-screen max-w-none h-screen max-h-screen !top-0 !left-0 !translate-x-0 !translate-y-0 rounded-none border-none shadow-none p-0 m-0 overflow-hidden gap-0" aria-describedby={undefined}>
           {selectedModel && (
             <div className="grid md:grid-cols-2 h-full">
               {/* Left Side - Portfolio Gallery with Lock Overlay */}
@@ -578,7 +578,7 @@ export default function LandingPage({ navigate }: LandingPageProps) {
                     className="w-full bg-white hover:bg-gray-100 text-black py-5"
                     onClick={() => {
                       setShowLimitedView(false);
-                      navigate('customer-registration');
+                      navigate('/customer/registration');
                     }}
                   >
                     <Users className="size-4 mr-2" />

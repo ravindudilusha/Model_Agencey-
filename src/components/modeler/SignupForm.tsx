@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { ArrowLeft, Upload, CheckCircle2, X } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
@@ -6,10 +5,13 @@ import { Label } from '../ui/label';
 import { Card } from '../ui/card';
 import { Alert, AlertDescription } from '../ui/alert';
 import { Badge } from '../ui/badge';
-import type { Page } from '../../App';
 
 interface SignupFormProps {
-  navigate: (page: Page) => void;
+  navigate: (path: string) => void;
+  currentPage: string;
+  isLoggedIn: boolean;
+  userRole: string;
+  logout: () => void;
 }
 
 export default function ModelerSignupForm({ navigate }: SignupFormProps) {
@@ -59,7 +61,10 @@ export default function ModelerSignupForm({ navigate }: SignupFormProps) {
             <p className="text-gray-600 mb-8">
               You will receive an email with your username and temporary password once verified.
             </p>
-            <Button onClick={() => navigate('landing')}>Back to Home</Button>
+            <p className="text-gray-600 mb-4">
+              Already have a request ID? Great! You can now log in using your credentials.
+            </p>
+            <Button onClick={() => navigate('/')}>Back to Home</Button>
           </Card>
         </div>
       </div>
@@ -72,7 +77,7 @@ export default function ModelerSignupForm({ navigate }: SignupFormProps) {
         <Button
           variant="ghost"
           className="mb-6"
-          onClick={() => navigate('landing')}
+          onClick={() => navigate('/')}
         >
           <ArrowLeft className="size-4 mr-2" />
           Back to Home
@@ -260,7 +265,7 @@ export default function ModelerSignupForm({ navigate }: SignupFormProps) {
             {/* Submit */}
             <div className="flex gap-4 pt-4">
               <Button type="submit" size="lg">Submit Signup</Button>
-              <Button type="button" variant="outline" size="lg" onClick={() => navigate('landing')}>
+              <Button type="button" variant="outline" size="lg" onClick={() => navigate('/')}>
                 Cancel
               </Button>
             </div>

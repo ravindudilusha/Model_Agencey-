@@ -1,44 +1,46 @@
-# dependencies
+# Node
 node_modules/
-jspm_packages/
-
-# build outputs
-dist/
-build/
-out/
-coverage/
-
-# environment variables
-.env
-.env.local
-.env.development
-.env.production
-
-# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+
+# Build outputs
+dist/
+build/
+out/
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
 logs/
+*.log
 
 # OS files
 .DS_Store
 Thumbs.db
 
-# editor folders and files
+# Editor directories and files
 .vscode/
 .idea/
-*.swp
-*.swo
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
 
-# cache
+# Cache
 .cache/
-.temp/
+.tmp/
 
-# lock files you do NOT want tracked
+# Testing
+coverage/
+
+# Optional lock files
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
-
-# misc
-*.log

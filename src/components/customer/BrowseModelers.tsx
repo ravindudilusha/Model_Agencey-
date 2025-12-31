@@ -5,7 +5,7 @@ import { Input } from '../ui/input';
 import { Card } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '../ui/dialog';
-import ModelDetailsModal from './ModelDetailsModal';
+import ModelDetailsDialog from '../ModelDetailsDialog';
 import BookingForm from './BookingForm';
 
 interface BrowseModelersProps {
@@ -381,7 +381,7 @@ export default function BrowseModelers({ isLoggedIn }: BrowseModelersProps) {
 
       {/* Model Details Modal */}
       {selectedModel && !showBookingForm && (
-        <ModelDetailsModal
+        <ModelDetailsDialog
           model={selectedModel}
           isLoggedIn={isLoggedIn}
           onClose={() => setSelectedModel(null)}

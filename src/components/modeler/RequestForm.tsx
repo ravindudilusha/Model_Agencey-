@@ -6,10 +6,14 @@ import { Label } from '../ui/label';
 import { Textarea } from '../ui/textarea';
 import { Card } from '../ui/card';
 import { Checkbox } from '../ui/checkbox';
-import type { Page } from '../../App';
+import type { UserRole } from '../../App';
 
 interface RequestFormProps {
-  navigate: (page: Page) => void;
+  navigate: (path: string) => void;
+  currentPage: string;
+  isLoggedIn: boolean;
+  userRole: UserRole;
+  logout: () => void;
 }
 
 export default function ModelerRequestForm({ navigate }: RequestFormProps) {
@@ -85,8 +89,8 @@ export default function ModelerRequestForm({ navigate }: RequestFormProps) {
               You will receive an email notification once your application has been reviewed.
             </p>
             <div className="flex gap-4 justify-center">
-              <Button onClick={() => navigate('landing')}>Back to Home</Button>
-              <Button variant="outline" onClick={() => navigate('login')}>Login</Button>
+              <Button onClick={() => navigate('/')}>Back to Home</Button>
+              <Button variant="outline" onClick={() => navigate('/login')}>Login</Button>
             </div>
           </Card>
         </div>
@@ -100,7 +104,7 @@ export default function ModelerRequestForm({ navigate }: RequestFormProps) {
         <Button
           variant="ghost"
           className="mb-6"
-          onClick={() => navigate('landing')}
+          onClick={() => navigate('/')}
         >
           <ArrowLeft className="size-4 mr-2" />
           Back to Home
@@ -413,7 +417,7 @@ export default function ModelerRequestForm({ navigate }: RequestFormProps) {
             {/* Submit */}
             <div className="flex gap-4 pt-4">
               <Button type="submit" size="lg">Submit Application</Button>
-              <Button type="button" variant="outline" size="lg" onClick={() => navigate('landing')}>
+              <Button type="button" variant="outline" size="lg" onClick={() => navigate('/')}>
                 Cancel
               </Button>
             </div>

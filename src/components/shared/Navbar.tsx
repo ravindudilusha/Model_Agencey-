@@ -1,11 +1,11 @@
 import { Menu, X, Users, LogOut } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '../ui/button';
-import type { Page, UserRole } from '../../App';
+import type { UserRole } from '../../App';
 
 interface NavbarProps {
-  navigate: (page: Page) => void;
-  currentPage: Page;
+  navigate: (path: string) => void;
+  currentPage: string;
   isLoggedIn?: boolean;
   userRole?: UserRole;
   logout?: () => void;
@@ -14,7 +14,7 @@ interface NavbarProps {
 export default function Navbar({ navigate, currentPage, isLoggedIn, userRole, logout }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const isActive = (page: Page) => currentPage === page;
+  const isActive = (path: string) => currentPage === path;
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
@@ -23,7 +23,7 @@ export default function Navbar({ navigate, currentPage, isLoggedIn, userRole, lo
           {/* Logo */}
           <div 
             className="flex items-center gap-2 cursor-pointer group" 
-            onClick={() => navigate('landing')}
+            onClick={() => navigate('/')}
           >
             <Users className="size-8 text-black group-hover:rotate-12 transition-transform" />
             <span className="text-xl">ModelBooking Pro</span>
@@ -32,61 +32,41 @@ export default function Navbar({ navigate, currentPage, isLoggedIn, userRole, lo
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center gap-8">
             <button 
-              onClick={() => navigate('landing')}
-              className={`hover:text-gray-600 transition-colors relative group ${isActive('landing') ? 'text-black' : ''}`}
+              onClick={() => navigate('/')}
+              className={`hover:text-gray-600 transition-colors relative group ${isActive('/') ? 'text-black' : ''}`}
             >
               Home
-              <span className={`absolute -bottom-1 left-0 h-0.5 bg-black transition-all ${isActive('landing') ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+              <span className={`absolute -bottom-1 left-0 h-0.5 bg-black transition-all ${isActive('/') ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
             </button>
 
             <button 
-              onClick={() => navigate('models')}
-              className={`hover:text-gray-600 transition-colors relative group ${isActive('models') ? 'text-black' : ''}`}
+              onClick={() => navigate('/models')}
+              className={`hover:text-gray-600 transition-colors relative group ${isActive('/models') ? 'text-black' : ''}`}
             >
               Models
-              <span className={`absolute -bottom-1 left-0 h-0.5 bg-black transition-all ${isActive('models') ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+              <span className={`absolute -bottom-1 left-0 h-0.5 bg-black transition-all ${isActive('/models') ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
             </button>
 
             <button 
-              onClick={() => navigate('model-academy')}
-              className={`hover:text-gray-600 transition-colors relative group ${isActive('model-academy') ? 'text-black' : ''}`}
+              onClick={() => navigate('/academy')}
+              className={`hover:text-gray-600 transition-colors relative group ${isActive('/academy') ? 'text-black' : ''}`}
             >
               Academy
-              <span className={`absolute -bottom-1 left-0 h-0.5 bg-black transition-all ${isActive('model-academy') ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+              <span className={`absolute -bottom-1 left-0 h-0.5 bg-black transition-all ${isActive('/academy') ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
             </button>
-
-            {isLoggedIn && userRole === 'customer' && (
-              <button 
-                onClick={() => navigate('customer-dashboard')}
-                className={`hover:text-gray-600 transition-colors relative group ${isActive('customer-dashboard') ? 'text-black' : ''}`}
-              >
-                Browse Models
-                <span className={`absolute -bottom-1 left-0 h-0.5 bg-black transition-all ${isActive('customer-dashboard') ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-              </button>
-            )}
-
-            {isLoggedIn && userRole === 'modeler' && (
-              <button 
-                onClick={() => navigate('modeler-dashboard')}
-                className={`hover:text-gray-600 transition-colors relative group ${isActive('modeler-dashboard') ? 'text-black' : ''}`}
-              >
-                Dashboard
-                <span className={`absolute -bottom-1 left-0 h-0.5 bg-black transition-all ${isActive('modeler-dashboard') ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-              </button>
-            )}
 
             {!isLoggedIn ? (
               <>
                 <Button 
                   variant="outline" 
-                  onClick={() => navigate('login')}
+                  onClick={() => navigate('/login')}
                   className="hover:bg-black hover:text-white transition-all"
                 >
                   Login
                 </Button>
                 <Button 
                   className="bg-black hover:bg-gray-800 text-white transition-all hover:scale-105"
-                  onClick={() => navigate('modeler-request')}
+                  onClick={() => navigate('/modeler/request')}
                 >
                   Get Started
                 </Button>
@@ -117,7 +97,7 @@ export default function Navbar({ navigate, currentPage, isLoggedIn, userRole, lo
           <div className="lg:hidden mt-4 pb-4 space-y-4 animate-in slide-in-from-top">
             <button 
               onClick={() => {
-                navigate('landing');
+                navigate('/');
                 setMobileMenuOpen(false);
               }}
               className="block w-full text-left hover:text-gray-600"
@@ -127,7 +107,7 @@ export default function Navbar({ navigate, currentPage, isLoggedIn, userRole, lo
 
             <button 
               onClick={() => {
-                navigate('models');
+                navigate('/models');
                 setMobileMenuOpen(false);
               }}
               className="block w-full text-left hover:text-gray-600"
@@ -137,7 +117,7 @@ export default function Navbar({ navigate, currentPage, isLoggedIn, userRole, lo
 
             <button 
               onClick={() => {
-                navigate('model-academy');
+                navigate('/academy');
                 setMobileMenuOpen(false);
               }}
               className="block w-full text-left hover:text-gray-600"
@@ -145,37 +125,13 @@ export default function Navbar({ navigate, currentPage, isLoggedIn, userRole, lo
               Academy
             </button>
 
-            {isLoggedIn && userRole === 'customer' && (
-              <button 
-                onClick={() => {
-                  navigate('customer-dashboard');
-                  setMobileMenuOpen(false);
-                }}
-                className="block w-full text-left hover:text-gray-600"
-              >
-                Browse Models
-              </button>
-            )}
-
-            {isLoggedIn && userRole === 'modeler' && (
-              <button 
-                onClick={() => {
-                  navigate('modeler-dashboard');
-                  setMobileMenuOpen(false);
-                }}
-                className="block w-full text-left hover:text-gray-600"
-              >
-                Dashboard
-              </button>
-            )}
-
             {!isLoggedIn ? (
               <>
                 <Button 
                   variant="outline" 
                   className="w-full" 
                   onClick={() => {
-                    navigate('login');
+                    navigate('/login');
                     setMobileMenuOpen(false);
                   }}
                 >
@@ -184,7 +140,7 @@ export default function Navbar({ navigate, currentPage, isLoggedIn, userRole, lo
                 <Button 
                   className="w-full bg-black hover:bg-gray-800 text-white"
                   onClick={() => {
-                    navigate('modeler-request');
+                    navigate('/modeler/request');
                     setMobileMenuOpen(false);
                   }}
                 >

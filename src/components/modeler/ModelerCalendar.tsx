@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChevronLeft, ChevronRight, Plus } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Plus, Calendar } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Card } from '../ui/card';
 import { Badge } from '../ui/badge';
@@ -11,6 +11,7 @@ import { Textarea } from '../ui/textarea';
 export default function ModelerCalendar() {
   const [currentDate, setCurrentDate] = useState(new Date(2025, 10, 1)); // November 2025
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [dateBlockType, setDateBlockType] = useState<'single' | 'range'>('single');
 
   // Mock bookings data
   const bookings = [
@@ -128,28 +129,95 @@ export default function ModelerCalendar() {
             Block Personal Date
           </Button>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="max-w-md">
           <DialogHeader>
             <DialogTitle>Block Date for Personal Event</DialogTitle>
             <DialogDescription>
-              Select a date to block for a personal event.
+              Select a single date or date range to block for personal events.
             </DialogDescription>
           </DialogHeader>
-          <div className="space-y-4 pt-4">
+          <div className="space-y-5 pt-4">
+            {/* Date Type Selection */}
             <div>
-              <Label htmlFor="blockDate">Date</Label>
-              <Input id="blockDate" type="date" />
+              <Label className="mb-3 block">Select Date Type</Label>
+              <div className="grid grid-cols-2 gap-3">
+                <button
+                  type="button"
+                  onClick={() => setDateBlockType('single')}
+                  className={`
+                    p-4 rounded-lg border-2 transition-all text-left
+                    ${dateBlockType === 'single' 
+                      ? 'border-black bg-black text-white' 
+                      : 'border-gray-200 hover:border-gray-300'
+                    }
+                  `}
+                >
+                  <div className="flex items-center gap-2 mb-1">
+                    <Calendar className="size-4" />
+                    <span className="font-medium">Single Date</span>
+                  </div>
+                  <p className="text-xs opacity-80">Block one specific day</p>
+                </button>
+                
+                <button
+                  type="button"
+                  onClick={() => setDateBlockType('range')}
+                  className={`
+                    p-4 rounded-lg border-2 transition-all text-left
+                    ${dateBlockType === 'range' 
+                      ? 'border-black bg-black text-white' 
+                      : 'border-gray-200 hover:border-gray-300'
+                    }
+                  `}
+                >
+                  <div className="flex items-center gap-2 mb-1">
+                    <Calendar className="size-4" />
+                    <span className="font-medium">Date Range</span>
+                  </div>
+                  <p className="text-xs opacity-80">Block multiple days</p>
+                </button>
+              </div>
             </div>
+
+            {/* Single Date Input */}
+            {dateBlockType === 'single' && (
+              <div>
+                <Label htmlFor="blockDate">Date</Label>
+                <Input id="blockDate" type="date" className="mt-2" />
+              </div>
+            )}
+
+            {/* Date Range Inputs */}
+            {dateBlockType === 'range' && (
+              <div className="space-y-4">
+                <div>
+                  <Label htmlFor="blockDateStart">Start Date</Label>
+                  <Input id="blockDateStart" type="date" className="mt-2" />
+                </div>
+                <div>
+                  <Label htmlFor="blockDateEnd">End Date</Label>
+                  <Input id="blockDateEnd" type="date" className="mt-2" />
+                </div>
+              </div>
+            )}
+
+            {/* Reason Field */}
             <div>
               <Label htmlFor="blockReason">Reason (Optional)</Label>
               <Textarea
                 id="blockReason"
-                placeholder="E.g., Personal commitment, vacation..."
+                placeholder="E.g., Personal commitment, vacation, family event..."
+                className="mt-2"
+                rows={3}
               />
             </div>
-            <div className="flex gap-2">
-              <Button>Block Date</Button>
-              <Button variant="outline">Cancel</Button>
+
+            {/* Action Buttons */}
+            <div className="flex gap-3 pt-2">
+              <Button className="flex-1">
+                {dateBlockType === 'single' ? 'Block Date' : 'Block Date Range'}
+              </Button>
+              <Button variant="outline" className="flex-1">Cancel</Button>
             </div>
           </div>
         </DialogContent>

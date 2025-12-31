@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import CreativeLandingPage from './components/landing/CreativeLandingPage';
 import ModelsPage from './components/models/ModelsPage';
 import ModelerRequestForm from './components/modeler/RequestForm';
@@ -10,75 +11,166 @@ import LoginPage from './components/auth/LoginPage';
 import ModelAcademy from './components/academy/ModelAcademy';
 
 export type UserRole = 'guest' | 'modeler' | 'customer';
-export type Page = 'landing' | 'models' | 'modeler-request' | 'modeler-signup' | 'modeler-dashboard' | 'customer-registration' | 'customer-dashboard' | 'login' | 'model-academy';
 
 export interface AppState {
-  currentPage: Page;
   userRole: UserRole;
   isLoggedIn: boolean;
   userData?: any;
 }
 
-export default function App() {
+function AppRoutes() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  
   const [appState, setAppState] = useState<AppState>({
-    currentPage: 'landing',
     userRole: 'guest',
     isLoggedIn: false
   });
 
-  const navigate = (page: Page, role?: UserRole) => {
-    setAppState(prev => ({
-      ...prev,
-      currentPage: page,
-      userRole: role || prev.userRole
-    }));
+  const handleNavigate = (path: string) => {
+    navigate(path);
   };
 
   const login = (role: UserRole, userData?: any) => {
     setAppState({
-      currentPage: role === 'modeler' ? 'modeler-dashboard' : 'customer-dashboard',
       userRole: role,
       isLoggedIn: true,
       userData
     });
+    navigate(role === 'modeler' ? '/modeler/dashboard' : '/customer/dashboard');
   };
 
   const logout = () => {
     setAppState({
-      currentPage: 'landing',
       userRole: 'guest',
       isLoggedIn: false
     });
+    navigate('/');
   };
 
-  const renderPage = () => {
-    switch (appState.currentPage) {
-      case 'landing':
-        return <CreativeLandingPage navigate={navigate} currentPage={appState.currentPage} isLoggedIn={appState.isLoggedIn} userRole={appState.userRole} logout={logout} />;
-      case 'models':
-        return <ModelsPage navigate={navigate} currentPage={appState.currentPage} isLoggedIn={appState.isLoggedIn} userRole={appState.userRole} logout={logout} />;
-      case 'modeler-request':
-        return <ModelerRequestForm navigate={navigate} currentPage={appState.currentPage} isLoggedIn={appState.isLoggedIn} userRole={appState.userRole} logout={logout} />;
-      case 'modeler-signup':
-        return <ModelerSignupForm navigate={navigate} currentPage={appState.currentPage} isLoggedIn={appState.isLoggedIn} userRole={appState.userRole} logout={logout} />;
-      case 'modeler-dashboard':
-        return <ModelerDashboard navigate={navigate} logout={logout} currentPage={appState.currentPage} isLoggedIn={appState.isLoggedIn} userRole={appState.userRole} />;
-      case 'customer-registration':
-        return <CustomerRegistration navigate={navigate} currentPage={appState.currentPage} isLoggedIn={appState.isLoggedIn} userRole={appState.userRole} logout={logout} />;
-      case 'customer-dashboard':
-        return <CustomerDashboard navigate={navigate} logout={logout} userRole={appState.userRole} currentPage={appState.currentPage} isLoggedIn={appState.isLoggedIn} />;
-      case 'login':
-        return <LoginPage navigate={navigate} login={login} currentPage={appState.currentPage} isLoggedIn={appState.isLoggedIn} userRole={appState.userRole} logout={logout} />;
-      case 'model-academy':
-        return <ModelAcademy navigate={navigate} currentPage={appState.currentPage} isLoggedIn={appState.isLoggedIn} userRole={appState.userRole} logout={logout} />;
-      default:
-        return <CreativeLandingPage navigate={navigate} currentPage={appState.currentPage} isLoggedIn={appState.isLoggedIn} userRole={appState.userRole} logout={logout} />;
-    }
-  };
+  const currentPage = location.pathname;
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {renderPage()}
-    </div>
+    <Routes>
+      <Route 
+        path="/" 
+        element={
+          <CreativeLandingPage 
+            navigate={handleNavigate} 
+            currentPage={currentPage} 
+            isLoggedIn={appState.isLoggedIn} 
+            userRole={appState.userRole} 
+            logout={logout} 
+          />
+        } 
+      />
+      <Route 
+        path="/models" 
+        element={
+          <ModelsPage 
+            navigate={handleNavigate} 
+            currentPage={currentPage} 
+            isLoggedIn={appState.isLoggedIn} 
+            userRole={appState.userRole} 
+            logout={logout} 
+          />
+        } 
+      />
+      <Route 
+        path="/modeler/request" 
+        element={
+          <ModelerRequestForm 
+            navigate={handleNavigate} 
+            currentPage={currentPage} 
+            isLoggedIn={appState.isLoggedIn} 
+            userRole={appState.userRole} 
+            logout={logout} 
+          />
+        } 
+      />
+      <Route 
+        path="/modeler/signup" 
+        element={
+          <ModelerSignupForm 
+            navigate={handleNavigate} 
+            currentPage={currentPage} 
+            isLoggedIn={appState.isLoggedIn} 
+            userRole={appState.userRole} 
+            logout={logout} 
+          />
+        } 
+      />
+      <Route 
+        path="/modeler/dashboard" 
+        element={
+          <ModelerDashboard 
+            navigate={handleNavigate} 
+            logout={logout} 
+            currentPage={currentPage} 
+            isLoggedIn={appState.isLoggedIn} 
+            userRole={appState.userRole} 
+          />
+        } 
+      />
+      <Route 
+        path="/customer/registration" 
+        element={
+          <CustomerRegistration 
+            navigate={handleNavigate} 
+            currentPage={currentPage} 
+            isLoggedIn={appState.isLoggedIn} 
+            userRole={appState.userRole} 
+            logout={logout} 
+          />
+        } 
+      />
+      <Route 
+        path="/customer/dashboard" 
+        element={
+          <CustomerDashboard 
+            navigate={handleNavigate} 
+            logout={logout} 
+            userRole={appState.userRole} 
+            currentPage={currentPage} 
+            isLoggedIn={appState.isLoggedIn} 
+          />
+        } 
+      />
+      <Route 
+        path="/login" 
+        element={
+          <LoginPage 
+            navigate={handleNavigate} 
+            login={login} 
+            currentPage={currentPage} 
+            isLoggedIn={appState.isLoggedIn} 
+            userRole={appState.userRole} 
+            logout={logout} 
+          />
+        } 
+      />
+      <Route 
+        path="/academy" 
+        element={
+          <ModelAcademy 
+            navigate={handleNavigate} 
+            currentPage={currentPage} 
+            isLoggedIn={appState.isLoggedIn} 
+            userRole={appState.userRole} 
+            logout={logout} 
+          />
+        } 
+      />
+    </Routes>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <div className="min-h-screen bg-gray-50">
+        <AppRoutes />
+      </div>
+    </BrowserRouter>
   );
 }

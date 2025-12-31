@@ -1,14 +1,18 @@
 import { useState } from 'react';
-import { ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 import { Textarea } from '../ui/textarea';
 import { Card } from '../ui/card';
-import type { Page } from '../../App';
+import type { UserRole } from '../../App';
 
 interface RegistrationProps {
-  navigate: (page: Page) => void;
+  navigate: (path: string) => void;
+  currentPage: string;
+  isLoggedIn: boolean;
+  userRole: UserRole;
+  logout: () => void;
 }
 
 export default function CustomerRegistration({ navigate }: RegistrationProps) {
@@ -32,7 +36,7 @@ export default function CustomerRegistration({ navigate }: RegistrationProps) {
             <p className="text-gray-600 mb-8">
               A confirmation email has been sent to your email address.
             </p>
-            <Button onClick={() => navigate('login')}>Login to Your Account</Button>
+            <Button onClick={() => navigate('/login')}>Login to Your Account</Button>
           </Card>
         </div>
       </div>
@@ -45,7 +49,7 @@ export default function CustomerRegistration({ navigate }: RegistrationProps) {
         <Button
           variant="ghost"
           className="mb-6"
-          onClick={() => navigate('landing')}
+          onClick={() => navigate('/')}
         >
           <ArrowLeft className="size-4 mr-2" />
           Back to Home
@@ -169,7 +173,7 @@ export default function CustomerRegistration({ navigate }: RegistrationProps) {
             {/* Submit */}
             <div className="flex gap-4 pt-4">
               <Button type="submit" size="lg">Create Account</Button>
-              <Button type="button" variant="outline" size="lg" onClick={() => navigate('landing')}>
+              <Button type="button" variant="outline" size="lg" onClick={() => navigate('/')}>
                 Cancel
               </Button>
             </div>
@@ -178,7 +182,7 @@ export default function CustomerRegistration({ navigate }: RegistrationProps) {
               Already have an account?{' '}
               <button
                 type="button"
-                onClick={() => navigate('login')}
+                onClick={() => navigate('/login')}
                 className="text-blue-600 hover:underline"
               >
                 Login here
