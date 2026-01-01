@@ -10,6 +10,7 @@ import CustomerDashboard from './components/customer/Dashboard';
 import LoginPage from './components/auth/LoginPage';
 import ForgotPassword from './components/auth/ForgotPassword';
 import ModelAcademy from './components/academy/ModelAcademy';
+import { PaymentForm } from './components/PaymentForm';
 
 export type UserRole = 'guest' | 'modeler' | 'customer';
 
@@ -170,6 +171,19 @@ function AppRoutes() {
           />
         } 
       />
+      <Route 
+  path="/payment"
+  element={
+    <PaymentForm
+      navigate={handleNavigate}
+      currentPage={currentPage}
+      isLoggedIn={appState.isLoggedIn}
+      userRole={appState.userRole}
+      logout={logout}
+    />
+  }
+/>
+
     </Routes>
   );
 }
