@@ -69,7 +69,13 @@ export default function LoginPage({ navigate, login }: LoginPageProps) {
                 </div>
                 <Button type="submit" className="w-full">Login as Model</Button>
                 <div className="text-center text-sm">
-                  <a href="#" className="text-blue-600 hover:underline">Forgot password?</a>
+                  <button
+                    type="button"
+                    onClick={() => navigate('/forgot-password')}
+                    className="text-blue-600 hover:underline"
+                  >
+                    Forgot password?
+                  </button>
                 </div>
                 <div className="text-center text-sm text-gray-600">
                   Don't have an account?{' '}
@@ -107,7 +113,13 @@ export default function LoginPage({ navigate, login }: LoginPageProps) {
                 </div>
                 <Button type="submit" className="w-full">Login as Customer</Button>
                 <div className="text-center text-sm">
-                  <a href="#" className="text-blue-600 hover:underline">Forgot password?</a>
+                  <button
+                    type="button"
+                    onClick={() => navigate('/forgot-password')}
+                    className="text-blue-600 hover:underline"
+                  >
+                    Forgot password?
+                  </button>
                 </div>
                 <div className="text-center text-sm text-gray-600">
                   Don't have an account?{' '}

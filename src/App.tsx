@@ -8,6 +8,7 @@ import ModelerDashboard from './components/modeler/Dashboard';
 import CustomerRegistration from './components/customer/Registration';
 import CustomerDashboard from './components/customer/Dashboard';
 import LoginPage from './components/auth/LoginPage';
+import ForgotPassword from './components/auth/ForgotPassword';
 import ModelAcademy from './components/academy/ModelAcademy';
 
 export type UserRole = 'guest' | 'modeler' | 'customer';
@@ -146,6 +147,14 @@ function AppRoutes() {
             isLoggedIn={appState.isLoggedIn} 
             userRole={appState.userRole} 
             logout={logout} 
+          />
+        } 
+      />
+      <Route 
+        path="/forgot-password" 
+        element={
+          <ForgotPassword 
+            navigate={handleNavigate}
           />
         } 
       />

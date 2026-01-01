@@ -307,28 +307,15 @@ export default function ModelsPage({ navigate, currentPage, isLoggedIn, userRole
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredModels.map((model) => (
-              <Card key={model.id} className="group overflow-hidden border-2 hover:border-black transition-all duration-300">
+              <Card key={model.id} className="group overflow-hidden border-2">
                 {/* Image */}
                 <div className="relative overflow-hidden aspect-[3/4] bg-gray-100">
                   <img 
                     src={model.image}
                     alt={model.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover"
                   />
                   
-                  {/* Overlay on hover */}
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                    <button 
-                      className="p-3 bg-white rounded-full hover:scale-110 transition-transform"
-                      onClick={() => setSelectedModel(model)}
-                    >
-                      <Eye className="size-5 text-black" />
-                    </button>
-                    <button className="p-3 bg-white rounded-full hover:scale-110 transition-transform">
-                      <Heart className="size-5 text-black" />
-                    </button>
-                  </div>
-
                   {/* Verified Badge */}
                   {model.verified && (
                     <Badge className="absolute top-3 right-3 bg-black text-white">
