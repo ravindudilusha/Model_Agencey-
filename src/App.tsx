@@ -183,7 +183,6 @@ function AppRoutes() {
     />
   }
 />
-
     </Routes>
   );
 }

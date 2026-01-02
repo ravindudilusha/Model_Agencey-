@@ -41,7 +41,7 @@ export default function ChooseYourJourney({ navigate, setIsHovering }: ChooseYou
             <TabsList className="w-full bg-white/5 backdrop-blur-sm border border-white/20 h-auto p-2 rounded-2xl grid grid-cols-2 lg:grid-cols-4 gap-2 mb-12">
               <TabsTrigger 
                 value="customers" 
-                className="data-[state=active]:bg-gradient-to-br data-[state=active]:from-blue-600 data-[state=active]:to-blue-800 data-[state=active]:text-white text-gray-300 rounded-xl py-4 px-6 transition-all duration-300"
+                className="data-[state=active]:bg-white/10 data-[state=active]:text-white data-[state=active]:border data-[state=active]:border-white/30 text-gray-400 rounded-xl py-4 px-6 transition-all duration-300"
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
               >
@@ -52,7 +52,7 @@ export default function ChooseYourJourney({ navigate, setIsHovering }: ChooseYou
               
               <TabsTrigger 
                 value="models" 
-                className="data-[state=active]:bg-gradient-to-br data-[state=active]:from-purple-600 data-[state=active]:to-purple-800 data-[state=active]:text-white text-gray-300 rounded-xl py-4 px-6 transition-all duration-300"
+                className="data-[state=active]:bg-white/10 data-[state=active]:text-white data-[state=active]:border data-[state=active]:border-white/30 text-gray-400 rounded-xl py-4 px-6 transition-all duration-300"
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
               >
@@ -62,7 +62,7 @@ export default function ChooseYourJourney({ navigate, setIsHovering }: ChooseYou
               
               <TabsTrigger 
                 value="photographers" 
-                className="data-[state=active]:bg-gradient-to-br data-[state=active]:from-pink-600 data-[state=active]:to-pink-800 data-[state=active]:text-white text-gray-300 rounded-xl py-4 px-6 transition-all duration-300"
+                className="data-[state=active]:bg-white/10 data-[state=active]:text-white data-[state=active]:border data-[state=active]:border-white/30 text-gray-400 rounded-xl py-4 px-6 transition-all duration-300"
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
               >
@@ -73,7 +73,7 @@ export default function ChooseYourJourney({ navigate, setIsHovering }: ChooseYou
               
               <TabsTrigger 
                 value="beauticians" 
-                className="data-[state=active]:bg-gradient-to-br data-[state=active]:from-orange-600 data-[state=active]:to-orange-800 data-[state=active]:text-white text-gray-300 rounded-xl py-4 px-6 transition-all duration-300"
+                className="data-[state=active]:bg-white/10 data-[state=active]:text-white data-[state=active]:border data-[state=active]:border-white/30 text-gray-400 rounded-xl py-4 px-6 transition-all duration-300"
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
               >
@@ -117,7 +117,7 @@ export default function ChooseYourJourney({ navigate, setIsHovering }: ChooseYou
                 {/* Right Side - Content */}
                 <div className="space-y-6">
                   <div>
-                    <Badge className="mb-4 bg-blue-500/20 backdrop-blur-sm text-blue-200 border border-blue-400/30 px-4 py-2">
+                    <Badge className="mb-4 bg-white/10 backdrop-blur-sm text-gray-200 border border-white/20 px-4 py-2">
                       <Users className="size-4 mr-2" />
                       FOR CUSTOMERS & BRANDS
                     </Badge>
@@ -135,8 +135,8 @@ export default function ChooseYourJourney({ navigate, setIsHovering }: ChooseYou
                   <div className="grid grid-cols-2 gap-4">
                     <Card className="bg-white/5 backdrop-blur-sm border border-white/20 p-5 hover:bg-white/10 transition-all">
                       <div className="flex items-center gap-3 mb-2">
-                        <div className="size-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
-                          <Search className="size-5 text-blue-300" />
+                        <div className="size-10 rounded-lg bg-white/10 flex items-center justify-center">
+                          <Search className="size-5 text-gray-300" />
                         </div>
                       </div>
                       <p className="text-white">Browse Profiles</p>
@@ -144,8 +144,8 @@ export default function ChooseYourJourney({ navigate, setIsHovering }: ChooseYou
 
                     <Card className="bg-white/5 backdrop-blur-sm border border-white/20 p-5 hover:bg-white/10 transition-all">
                       <div className="flex items-center gap-3 mb-2">
-                        <div className="size-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
-                          <Calendar className="size-5 text-blue-300" />
+                        <div className="size-10 rounded-lg bg-white/10 flex items-center justify-center">
+                          <Calendar className="size-5 text-gray-300" />
                         </div>
                       </div>
                       <p className="text-white">Book Instantly</p>
@@ -153,8 +153,8 @@ export default function ChooseYourJourney({ navigate, setIsHovering }: ChooseYou
 
                     <Card className="bg-white/5 backdrop-blur-sm border border-white/20 p-5 hover:bg-white/10 transition-all">
                       <div className="flex items-center gap-3 mb-2">
-                        <div className="size-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
-                          <Shield className="size-5 text-blue-300" />
+                        <div className="size-10 rounded-lg bg-white/10 flex items-center justify-center">
+                          <Shield className="size-5 text-gray-300" />
                         </div>
                       </div>
                       <p className="text-white">Verified Models</p>
@@ -162,8 +162,8 @@ export default function ChooseYourJourney({ navigate, setIsHovering }: ChooseYou
 
                     <Card className="bg-white/5 backdrop-blur-sm border border-white/20 p-5 hover:bg-white/10 transition-all">
                       <div className="flex items-center gap-3 mb-2">
-                        <div className="size-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
-                          <Star className="size-5 text-blue-300" />
+                        <div className="size-10 rounded-lg bg-white/10 flex items-center justify-center">
+                          <Star className="size-5 text-gray-300" />
                         </div>
                       </div>
                       <p className="text-white">Rate & Review</p>
@@ -174,7 +174,7 @@ export default function ChooseYourJourney({ navigate, setIsHovering }: ChooseYou
                   <div className="flex flex-wrap gap-4 pt-4">
                     <Button 
                       size="lg"
-                      className="bg-gradient-to-r from-blue-600 to-blue-800 text-white hover:from-blue-700 hover:to-blue-900 px-8 py-6 group border-0"
+                      className="bg-white text-black hover:bg-gray-200 px-8 py-6 group border-0"
                       onClick={() => navigate('/customer/registration')}
                       onMouseEnter={() => setIsHovering(true)}
                       onMouseLeave={() => setIsHovering(false)}
@@ -227,7 +227,7 @@ export default function ChooseYourJourney({ navigate, setIsHovering }: ChooseYou
                 {/* Left Side - Content */}
                 <div className="space-y-6">
                   <div>
-                    <Badge className="mb-4 bg-purple-500/20 backdrop-blur-sm text-purple-200 border border-purple-400/30 px-4 py-2">
+                    <Badge className="mb-4 bg-white/10 backdrop-blur-sm text-gray-200 border border-white/20 px-4 py-2">
                       <Star className="size-4 mr-2" />
                       FOR ASPIRING MODELS
                     </Badge>
@@ -245,8 +245,8 @@ export default function ChooseYourJourney({ navigate, setIsHovering }: ChooseYou
                   <div className="grid grid-cols-2 gap-4">
                     <Card className="bg-white/5 backdrop-blur-sm border border-white/20 p-5 hover:bg-white/10 transition-all">
                       <div className="flex items-center gap-3 mb-2">
-                        <div className="size-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
-                          <Users className="size-5 text-purple-300" />
+                        <div className="size-10 rounded-lg bg-white/10 flex items-center justify-center">
+                          <Users className="size-5 text-gray-300" />
                         </div>
                       </div>
                       <p className="text-white">Create Profile</p>
@@ -254,8 +254,8 @@ export default function ChooseYourJourney({ navigate, setIsHovering }: ChooseYou
 
                     <Card className="bg-white/5 backdrop-blur-sm border border-white/20 p-5 hover:bg-white/10 transition-all">
                       <div className="flex items-center gap-3 mb-2">
-                        <div className="size-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
-                          <Camera className="size-5 text-purple-300" />
+                        <div className="size-10 rounded-lg bg-white/10 flex items-center justify-center">
+                          <Camera className="size-5 text-gray-300" />
                         </div>
                       </div>
                       <p className="text-white">Upload Portfolio</p>
@@ -263,8 +263,8 @@ export default function ChooseYourJourney({ navigate, setIsHovering }: ChooseYou
 
                     <Card className="bg-white/5 backdrop-blur-sm border border-white/20 p-5 hover:bg-white/10 transition-all">
                       <div className="flex items-center gap-3 mb-2">
-                        <div className="size-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
-                          <Calendar className="size-5 text-purple-300" />
+                        <div className="size-10 rounded-lg bg-white/10 flex items-center justify-center">
+                          <Calendar className="size-5 text-gray-300" />
                         </div>
                       </div>
                       <p className="text-white">Get Bookings</p>
@@ -272,8 +272,8 @@ export default function ChooseYourJourney({ navigate, setIsHovering }: ChooseYou
 
                     <Card className="bg-white/5 backdrop-blur-sm border border-white/20 p-5 hover:bg-white/10 transition-all">
                       <div className="flex items-center gap-3 mb-2">
-                        <div className="size-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
-                          <Star className="size-5 text-purple-300" />
+                        <div className="size-10 rounded-lg bg-white/10 flex items-center justify-center">
+                          <Star className="size-5 text-gray-300" />
                         </div>
                       </div>
                       <p className="text-white">Build Reviews</p>
@@ -284,7 +284,7 @@ export default function ChooseYourJourney({ navigate, setIsHovering }: ChooseYou
                   <div className="flex flex-wrap gap-4 pt-4">
                     <Button 
                       size="lg"
-                      className="bg-gradient-to-r from-purple-600 to-purple-800 text-white hover:from-purple-700 hover:to-purple-900 px-8 py-6 group border-0"
+                      className="bg-white text-black hover:bg-gray-200 px-8 py-6 group border-0"
                       onClick={() => navigate('/modeler/request')}
                       onMouseEnter={() => setIsHovering(true)}
                       onMouseLeave={() => setIsHovering(false)}
@@ -296,7 +296,7 @@ export default function ChooseYourJourney({ navigate, setIsHovering }: ChooseYou
                     <Button 
                       size="lg"
                       variant="outline"
-                      className="bg-transparent border-2 border-purple-400/50 text-white hover:bg-purple-500/20 px-8 py-6 group"
+                      className="bg-transparent border-2 border-white/30 text-white hover:bg-white/10 px-8 py-6 group"
                       onClick={() => navigate('/modeler/login')}
                       onMouseEnter={() => setIsHovering(true)}
                       onMouseLeave={() => setIsHovering(false)}
